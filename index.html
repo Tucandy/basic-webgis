@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiện trạng cẩm hoàng</title>
+    <link rel="stylesheet" href="./css/ol.css" type="text/css">
+    <link rel="stylesheet" href="./css/main.css" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+      background-color: #99b4ff;
+
+    }
+    
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 400px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: #99b4ff;
+      height: 110%;
+    }
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #99b4ff;
+      color: #99b4ff;
+      padding: 10px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;} 
+    }
+
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+    </div>
+    <div class="container-fluid text-center" id="myNavbar">
+      <ul class="container-fluid text-center">
+        <li class="active"><h3><a href="#">Bản Đồ Cẩm Hoàng</a></h3></li>
+      </ul>
+
+    </div>
+  </div>
+</nav>
+  
+<div class="container-fluid text-center">    
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+      <p><a href="#"><input type="checkbox" id="checkvung" checked><label for="checkvung">Hiển trạng Cẩm Hoàng</label></a></p>
+      <p><a href="#"><input type="checkbox" id="checkduong" checked><label for="checkduong">Hiển thị đường</label></a></p>
+      <p><a href="#"><input type="checkbox" id="checkdiem" checked><label for="checkdiem">Hiển thị điểm</label></a></p>
+      <br>
+        <form>
+        <input type="text" size="20" onkeyup="showResult(this.value)" placeholder="Tìm kiếm">
+        <div id="livesearch"></div>
+    </form>
+</br>
+    </div>
+    <div class="col-sm-8 text-left"> 
+    <div id="map" class="map"></div>
+
+    <div id="info" hidden=""></div>
+    <div id="popup" class="ol-popup">
+        <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+        <div id="popup-content"></div>
+    </div>
+    </div>
+    <div class="col-sm-2 sidenav">
+      <div class="well">
+      <img class="noteMap" src="http://localhost:8080/geoserver/DataGis/wms?REQUEST=GetLegendGraphic&VERSION=1.1.0&FORMAT=image/png&LAYER=DataGis:camhoangdc_1" alt="">
+    <br>
+    <img class="noteMap" src=" http://localhost:8080/geoserver/DataGis/wms?REQUEST=GetLegendGraphic&VERSION=1.1.0&FORMAT=image/png&LAYER=DataGis:camhoanggt_1" alt="">
+    <br>
+    <img class="noteMap" src=" http://localhost:8080/geoserver/DataGis/wms?REQUEST=GetLegendGraphic&VERSION=1.1.0&FORMAT=image/png&LAYER=DataGis:camhoangub_1" alt="">
+  </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="container-fluid text-center">
+  <h4>Bản Đồ Sử Dụng Đất Cẩm Hoàng</h4>
+</footer>
+</head>
+
+<body>
+
+    <br>
+
+
+    <script src="./js/ol.js" type="text/javascript"></script>
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script src="./js/search.js" type="text/javascript"></script>
+    <script src="./js/main.js" type="text/javascript"></script>
+</body>
+</html>
